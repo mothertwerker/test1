@@ -38,7 +38,7 @@ var line1 = new TimeSeries();
 
 function ecgchart(input_value){
 // Add a random value to each line every second
-line1.append(new Date().getTime(), input_value);
+line1.append(new Date().getTime(), 100);
 timeconstant=timeconstant+1;
 if(timeconstant%80==0){
     //smoothie.addTimeSeries(line1);
