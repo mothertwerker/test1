@@ -40,7 +40,7 @@ var line1 = new TimeSeries();
 function ecgchart(input_value){
 // Add a random value to each line every second
 line1.append(new Date().getTime(), count_slopey);
-lsize = line1.length;
+lsize = this.data.length;
 count_slopey = count_slopey+1;
 if(count_slopey >= 80) count_slopey =0;
 timeconstant=timeconstant+1;
