@@ -14,7 +14,7 @@
    </body>
 </html>
 <script>
-console.log("hello3");
+console.log("hello");
    
 if('serviceWorker' in navigator) {
          // window load後才執行，以免增加頁面讀取的時間
@@ -74,11 +74,11 @@ navigator.bluetooth.requestDevice({
     chara.startNotifications().then(c => {
         c.addEventListener('characteristicvaluechanged', function(e){
            let ecgfromble = Array.from(new Uint8Array(this.value.buffer));
-           console.log(ecgfromble);
+           //console.log(ecgfromble);
            ecgfromble.forEach(ecgchart);
            ecgchart(count_slopey);
            //ecgchart(ecgfromble[1]);
-           //console.log(count_slopey);
+           console.log(count_slopey);
            //console.log(ecgfromble[1]);
            smoothie.addTimeSeries(line1);
 
