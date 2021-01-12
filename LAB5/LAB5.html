@@ -66,10 +66,10 @@ navigator.bluetooth.requestDevice({
     let lock = true;
     chara.startNotifications().then(c => {
         c.addEventListener('characteristicvaluechanged', function(e){
-           let ecgfromble = Array.from(new Uint8Array(1));   //this.value.buffer
+           let ecgfromble = Array.from(new Uint8Array(this.value.buffer));
            console.log(ecgfromble);
            ecgfromble.forEach(ecgchart);
-           ecgchart(ecgfromble[1]);
+           ecgchart(100);   //ecgfromble[1]
            smoothie.addTimeSeries(line1);
 
         });
