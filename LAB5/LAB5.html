@@ -14,7 +14,7 @@
    </body>
 </html>
 <script>
-console.log("hello3");
+console.log("hello");
    
 if('serviceWorker' in navigator) {
          // window load後才執行，以免增加頁面讀取的時間
@@ -42,9 +42,9 @@ line1.append(new Date().getTime(), count_slopey);
 count_slopey = count_slopey+1;
 if(count_slopey >= 100) count_slopey =0;
 timeconstant=timeconstant+1;
+console.log(count_slopey);
 if(timeconstant%80==0){
     //smoothie.addTimeSeries(line1);
-      console.log(ecgfromble);
    }
 // Add to SmoothieChart new Date().getTime()
 }
