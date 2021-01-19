@@ -14,7 +14,7 @@
    </body>
 </html>
 <script>
-console.log("hello1");
+console.log("hello5");
    
 if('serviceWorker' in navigator) {
          // window load後才執行，以免增加頁面讀取的時間
@@ -40,8 +40,6 @@ var i = 0;
 function ecgchart(input_value){
 // Add a random value to each line every second
 line1.append(new Date().getTime(), input_value);
-//count_slopey = count_slopey+1;
-//if(count_slopey >= 80) count_slopey =0;
 timeconstant=timeconstant+1;
 //console.log(count_slopey);
 if(timeconstant%80==0){
@@ -77,7 +75,9 @@ navigator.bluetooth.requestDevice({
            console.log(ecgfromble);
            ecgfromble.forEach(ecgchart);
            //ecgchart(count_slopey);
-           ecgchart(ecgfromble[1]);
+           count_slopey = count_slopey+1;
+           if(count_slopey >= 80) count_slopey =0;
+           ecgchart(count_slopey);   //ecgfromble[1]
            //console.log(count_slopey);
            //console.log(ecgfromble[1]);
            smoothie.addTimeSeries(line1);
