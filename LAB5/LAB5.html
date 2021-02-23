@@ -31,6 +31,23 @@ if('serviceWorker' in navigator) {
     });
  }
 smoothie = new SmoothieChart();
+function download(data, filename, type) {
+    var file = new Blob([data], {type: type});
+    if (window.navigator.msSaveOrOpenBlob) // IE10+
+        window.navigator.msSaveOrOpenBlob(file, filename);
+    else { // Others
+        var a = document.createElement("a"),
+                url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);  
+        }, 0); 
+    }
+}
 var timeconstant=0;
 var count_slopey=0;
 var lsize=0;
@@ -78,6 +95,7 @@ navigator.bluetooth.requestDevice({
            count_slopey = count_slopey+1;
            if(count_slopey >= 80) count_slopey =0;
            ecgchart(count_slopey);   //ecgfromble[1]
+           download(0, test, txt);
            //console.log(count_slopey);
            //console.log(ecgfromble[1]);
            smoothie.addTimeSeries(line1);
